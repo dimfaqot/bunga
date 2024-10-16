@@ -42,9 +42,15 @@
     <?php endif; ?>
 
     <?= view('navbar'); ?>
+    <!-- sm -->
+    <div class="d-block d-md-none d-sm-block">
+        <div style="margin-top: 80px;"></div>
+    </div>
+
     <div class="container" style="margin-bottom: 100px;">
         <?= $this->renderSection('content') ?>
     </div>
+
 
     <?= view('contents/footer'); ?>
 

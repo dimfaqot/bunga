@@ -103,14 +103,16 @@
                 <a href="<?= settings('facebook'); ?>" class="link_light"><i class="fa-brands fa-facebook"></i></a>
                 <a href="<?= settings('tiktok'); ?>" class="link_light"><i class="fa-brands fa-tiktok"></i></a>
             </div>
+            <?php if (url() == ""): ?>
+                <div class="bg_5 p-2" style="height: 250px;overflow-y:auto">
+                    <h6>CARA PEMESANAN</h6>
+                    <?php foreach (urutan_transaksi() as $k => $i): ?>
+                        <h6 class="text_dark"><?= $k + 1; ?>. <i class="<?= $i['icon']; ?>"></i> <?= $i['text']; ?></h6>
+                    <?php endforeach; ?>
 
-            <div class="bg_5 p-2" style="height: 250px;overflow-y:auto">
-                <h6>CARA PEMESANAN</h6>
-                <?php foreach (urutan_transaksi() as $k => $i): ?>
-                    <h6 class="text_dark"><?= $k + 1; ?>. <i class="<?= $i['icon']; ?>"></i> <?= $i['text']; ?></h6>
-                <?php endforeach; ?>
+                </div>
 
-            </div>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </div>
@@ -131,7 +133,7 @@
         </div>
         <div class="p-3" style="margin-top: 60px;">
             <?php foreach (menus() as $i): ?>
-                <a href="" class="fs-6 fw-100 mb-1 <?= (url() == $i['controller'] ? 'btn_1' : 'btn_4'); ?>" style="display:block;width:100%;text-align:left"><i class="<?= $i['icon']; ?>"></i> <?= $i['menu']; ?></a>
+                <a href="<?= base_url($i['controller']); ?>" class="fs-6 fw-100 mb-1 <?= (url() == $i['controller'] ? 'btn_1' : 'btn_4'); ?>" style="display:block;width:100%;text-align:left"><i class="<?= $i['icon']; ?>"></i> <?= $i['menu']; ?></a>
             <?php endforeach; ?>
             <?php if (session('id')): ?>
                 <a href="<?= base_url('logout'); ?>" class="btn_2 fs-6 fw-100 mt-3" style="display:block;width:100%;text-align:left"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
